@@ -16,14 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            [
-                'id' => 1,
-                'name'=>'Admin',
-                'email'=>'admin@admin.com',
-                'password'=> Hash::make('12345678'),
-                'is_admin' => true
-                ]
+        $this->call([
+            ProductSeeder::class,
+        UserSeeder::class
         ]);
+
+
+
     }
 }
