@@ -35,4 +35,12 @@ class HomeController extends Controller
 
         return Redirect::back();
     }
+
+    public function goHome(){
+
+        return view('views2.home');
+    }
 }
+
+
+

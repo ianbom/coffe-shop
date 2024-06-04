@@ -24,13 +24,15 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
-// Route::get('/', function () {
-//     return view ('views2.home');
-// });
+Route::get('/', function () {
+    return view ('views2.home');
+});
 
 Route::get('/loginUser', function () {
     return view ('login.login');
 });
+
+
 
 Route::get('/reg', function () {
     return view ('login.register');
@@ -86,11 +88,13 @@ Route::get('/grafik', function () {
 
 
 
+
+
 Auth::routes();
 
     // Admin Dashboard
     Route::get('/dashboard_admin', [DashboardController::class, 'total'])->name('total');
-
+    Route::get('/', [HomeController::class, 'goHome'])->name('goHome');
 
     // Admin Product
     Route::get('/admin_product', [ProductController::class, 'index_product_admin'])->name('index_product_admin');
@@ -115,6 +119,7 @@ Auth::routes();
 
     //HOME
     Route::get('/home', [HomeController::class, 'show_profile'])->name('show_profile');
+    Route::get('/', [HomeController::class, 'show_profile'])->name('show_profile');
     Route::post('/home', [HomeController::class, 'edit_profile'])->name('edit_profile');
 
     //MENU
