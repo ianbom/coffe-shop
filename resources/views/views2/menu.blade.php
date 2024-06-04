@@ -185,14 +185,14 @@
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">NgopiYukk</a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="/home">NgopiYukk</a></h1>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto" href="/" style="margin-left: 150px">Home</a></li>
-          <li><a class="nav-link scrollto" href="/">About</a></li>
-          <li><a class="nav-link scrollto" href="/">Events</a></li>
-          <li><a class="nav-link scrollto" href="/">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="/home" style="margin-left: 150px">Home</a></li>
+          <li><a class="nav-link scrollto" href="/home">About</a></li>
+          <li><a class="nav-link scrollto" href="/home">Events</a></li>
+          <li><a class="nav-link scrollto" href="/home">Gallery</a></li>
           <li><a class="nav-link scrollto" href="/menu">Menu</a></li>
           @if (Auth::check())
           <li><a class="nav-link scrollto" href="/orderku">Order</a></li>

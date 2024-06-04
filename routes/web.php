@@ -10,7 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 /*
@@ -24,9 +24,9 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
-Route::get('/', function () {
-    return view ('views2.home');
-});
+// Route::get('/', function () {
+//     return view ('views2.home');
+// });
 
 Route::get('/loginUser', function () {
     return view ('login.login');
@@ -105,7 +105,7 @@ Auth::routes();
 
 
     Route::get('/product', [ProductController::class, 'index_product'])->name('index_product');
-    
+
     Route::get('/product/category/{category}', [ProductController::class, 'showByCategory'])->name('product_by_category');
 
 
@@ -133,8 +133,8 @@ Auth::routes();
     Route::post('/orderku/{order}/pay', [OrderJadiController::class, 'submit_payment_receipt_jadi'])->name('submit_payment_receipt_jadi');
 
     //PROFILE
-    Route::get('/profileCard', [ProfileUserController::class, 'show_profile_user'])->name('show_profile_user');
-    Route::post('/profileCard', [ProfileUserController::class, 'edit_profile_user'])->name('edit_profile_user');
+  //  Route::get('/profileCard', [ProfileUserController::class, 'show_profile_user'])->name('show_profile_user');
+   // Route::post('/profileCard', [ProfileUserController::class, 'edit_profile_user'])->name('edit_profile_user');
 
 Route::middleware(['admin'])->group(function() {
     Route::get('/product/create', [ProductController::class, 'create_product'])->name('create_product');
