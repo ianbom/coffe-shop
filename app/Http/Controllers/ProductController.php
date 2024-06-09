@@ -33,12 +33,10 @@ class ProductController extends Controller
             'category' => 'required|boolean'
         ]);
 
-        $file = $request->file('image');
-        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
-
-        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
-
-
+        $file = $request->file('image')->store('public/images/product');
+        $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
+        // $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
+        //Storage::disk('local')->put('public/' . $path, file_get_contents($file));
         Product::create([
             'name' => $request->name,
             'price' => $request->price,
@@ -64,10 +62,8 @@ class ProductController extends Controller
             'category' => 'required|boolean'
         ]);
 
-        $file = $request->file('image');
-        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
-
-        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+        $file = $request->file('image')->store('public/images/product');
+        $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
 
 
         Product::create([
@@ -151,10 +147,8 @@ class ProductController extends Controller
 
         ]);
 
-        $file = $request->file('image');
-        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
-
-        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+        $file = $request->file('image')->store('public/images/product');
+        $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
 
 
         $product->update([
@@ -180,10 +174,8 @@ class ProductController extends Controller
             'category' => 'required'
         ]);
 
-        $file = $request->file('image');
-        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
-
-        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+        $file = $request->file('image')->store('public/images/product');
+        $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
 
 
         $product->update([

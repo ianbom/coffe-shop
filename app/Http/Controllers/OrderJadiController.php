@@ -82,15 +82,14 @@ class OrderJadiController extends Controller
         {
             return view('views2.order_detail', compact('order'));
         }
-        
+
          return Redirect::route('views2.order');
     }
 
     public function submit_payment_receipt_jadi(Order $order, Request $request)
     {
-        $file = $request->file('payment_receipt');
-        $path = time() . '_' . $order->id . '.' . $file->getClientOriginalExtension();
-        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+        $file = $request->file('image')->store('public/images/product');
+        $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
 
         $order->update([
             'payment_receipt' => $path
