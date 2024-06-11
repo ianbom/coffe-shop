@@ -46,7 +46,7 @@ class ProductController extends Controller
         ]);
         $url = Storage::disk('s3')->url($path);
         //$path = Storage::putFile('image', $file);
-        Storage::setVisibility($path, 'public');
+        //Storage::setVisibility($path, 'public');
 
         Product::create([
             'name' => $request->name,
