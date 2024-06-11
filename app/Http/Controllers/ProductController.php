@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         $file = $request->file('image');
         // $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
-        $path = $file->store('public/image/product', [
+        $path = $file->store('public/images/product', [
             'disk'=> 's3',
             'visibility'=>'public'
         ]);
