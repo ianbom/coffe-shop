@@ -296,7 +296,7 @@
 
           @foreach ($cari as $prod)
     <div class="col-lg-6 menu-item filter-starters">
-        <img src="{{ url('storage/' . $prod->image) }}" class="menu-img" alt="image menu">
+        <img src="{{ $prod->image) }}" class="menu-img" alt="image menu">
         <div class="menu-content">
             <a href="{{ url('storage/' . $prod->image) }}"> {{ $prod->name }}</a><span>Rp {{ $prod->price }}</span>
         </div>

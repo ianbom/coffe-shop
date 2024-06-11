@@ -33,22 +33,35 @@ class ProductController extends Controller
             'category' => 'required|boolean'
         ]);
 
-        $file = $request->file('image')->store('public/images/product');
-        $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
-        // $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
+        //$file = $request->file('image')->store('public/images/product');
+
+        //$path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
         //Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+
+        $file = $request->file('image');
+        // $path = "https://ngopiyukk-bucket-s3.s3.ap-southeast-1.amazonaws.com/".$file;
+        $path = $file->store('public/image/product', [
+            'disk'=> 's3',
+            'visibility'=>'public'
+        ]);
+        $url = Storage::disk('s3')->url($path);
+        //$path = Storage::putFile('image', $file);
+        Storage::setVisibility($path, 'public');
+
         Product::create([
             'name' => $request->name,
             'price' => $request->price,
             'stock' => $request->stock,
             'description' => $request->description,
-            'image' => $path,
+            'image' => $url,
             'category' => $request->category
         ]);
 
         Session::flash('success', 'Product added successfully');
-
-        return Redirect::back();
+        dd($path);
+        return response()->json([
+            'image'=> $path
+        ]);
     }
 
     public function store_product(Request $request)
